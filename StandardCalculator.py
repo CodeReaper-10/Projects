@@ -13,18 +13,30 @@ inp_fld.insert(0, 0)
 def butn_clk(op):
     global expr
     global dexpr
-    if op == "**0.5":
+    if op == "**0.5" and expr != "":
         dexpr = "√" + str("(" + dexpr + ")")
         inputFieldDisplay.set(dexpr)
         expr = "(" + expr + ")" + str(op)
-    elif op == "**2":
+    elif op == "**0.5" and expr == "":
+        expr = "0"
+        dexpr = "√" + str("(" + expr + ")")
+        inputFieldDisplay.set(dexpr)
+        expr = "(" + expr + ")" + str(op)
+    elif op == "**2" and expr != "":
         dexpr = str("(" + dexpr + ")") + "^2"
         inputFieldDisplay.set(dexpr)
         expr = "(" + expr + ")" + str(op)
-    elif op == "**(-1)":
+    elif op == "**2" and expr == "":
+        expr = "0"
+        dexpr = str("(" + expr + ")") + "^2"
+        inputFieldDisplay.set(dexpr)
+        expr = "(" + expr + ")" + str(op)
+    elif op == "**(-1)" and expr != "":
         dexpr = "1/" + str("(" + dexpr + ")")
         inputFieldDisplay.set(dexpr)
         expr = "(" + expr + ")" + str(op)
+    elif op == "**(-1)" and expr == "":
+        inputFieldDisplay.set("Cannot divide by zero")
     elif op == "*(-1)":
         if expr != "":
             expr = expr + str(op)
